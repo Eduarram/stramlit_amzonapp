@@ -2,14 +2,11 @@
 import streamlit as st 
 import numpy as np 
 import pandas as pd 
-import matplotlib.pyplot as plt
 import os 
 import plotly.express as px
 from PIL import Image
 from streamlit_echarts import st_echarts
-from streamlit_echarts import st_pyecharts
 import json 
-
 
 
 
