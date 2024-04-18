@@ -11,11 +11,6 @@ from streamlit_echarts import st_pyecharts
 import json 
 
 
-###########          add the path and title 
-
-os.getcwd() 
-
-os.chdir("C:\\Users\\eduar\\OneDrive\\Desktop\\time_series\\amazon")
 
 
 ######################################### title and logo ##########################################
@@ -42,7 +37,7 @@ html_title = """
     border-radius:6px;
     }
     </style>
-    <center><h1 class="title-test">Amazon Interactive Sales Dashboard</h1></center>"""
+    <center><h1 class="title-test">dashboard interactivo de ventas de Amazon</h1></center>"""
 
 with col2:
     st.markdown(html_title, unsafe_allow_html=True)
@@ -127,9 +122,9 @@ option ={
                 'labelLine':{'show':'false'},
                 'itemStyle':{'borderColor':'#fff'},         
                 'data': [
-                    {'value':'809', 'name':'2 or less'},
-                    {'value':'433', 'name':'3 to 6'},
-                    {'value':'30', 'name':'7 or more'}
+                    {'value':'809', 'name':'2 o menos'},
+                    {'value':'433', 'name':'3 a 6'},
+                    {'value':'30', 'name':'7 o mas'}
                     ]
 
     
@@ -145,7 +140,7 @@ fig = px.bar(resumen, x=resumen.index, y='Profit')
 fig.update_xaxes(tickfont=dict(family=fuente, size=14))
 fig.update_yaxes(tickfont=dict(family=fuente, size=14))
 
-fig.update_traces(marker_color='#ffaa00')
+fig.update_traces(marker_color='rgb(166,216,84)')
 
 ################       barplot for Sales         ###############################################################
 
@@ -153,16 +148,16 @@ fig2 = px.bar(resumen, x=resumen.index, y='Sales')
 fig2.update_xaxes(tickfont=dict(family=fuente, size=14))
 fig2.update_yaxes(tickfont=dict(family=fuente, size=14))
 
-fig2.update_traces(marker_color='#ffaa00')
+fig2.update_traces(marker_color='rgb(55,126,184)')
 
 ######################### Barplot for quantity #################################################################
 
 
-fig3 = px.bar(resumen, x=resumen.index, y='Quantity')
+fig3 = px.bar(resumen, x=resumen.index, y='Quantity',)
 fig3.update_xaxes(tickfont=dict(family=fuente, size=14))
 fig3.update_yaxes(tickfont=dict(family=fuente, size=14))
 
-fig3.update_traces(marker_color='#ffaa00')
+fig3.update_traces(marker_color='#FECB52')
 
 
 ###################################     map chart     #########################################################
@@ -173,14 +168,14 @@ fig4 = px.choropleth(
     color=countrys['Sales'], 
     scope="usa", 
     labels={'locations':'regions', 'color':'Sales'},
-    color_continuous_scale='YlOrRd')
+    color_continuous_scale='aggrnyl')
 
 
 ##################################################        heatmap        #################################################
 
 
-fig5 = px.treemap(products, path=[px.Constant("product"), 'Category', 'Product Name'], values='Sales', color='Sales',
-                 color_continuous_scale='YlOrRd')
+fig5 = px.treemap(products, path=[px.Constant("producto"), 'Category', 'Product Name'], values='Sales', color='Sales',
+                 color_continuous_scale='aggrnyl')
 fig5.update_layout(width=1400)
 
 
@@ -199,14 +194,14 @@ fig6 = go.Figure(go.Waterfall(
     totals={"marker": {"color": "deep sky blue", "line": {"color": "blue", "width": 3}}}
 ))
 
-fig6.update_layout(title="Profit and loss", waterfallgap=0.3, width=1350, height=500)
+fig6.update_layout(title="varianza de la utilidad", waterfallgap=0.3, width=1350, height=500)
 
 
 
 ###################################### waterfall javascript chart ########################################################
 
 option2 = {
-    "title": {"text": "Accumulated Waterfall Chart"},
+    "title": {"text": "benefio acumulado grafica de cascada"},
     "tooltip": {
         "trigger": "axis",
         "axisPointer": {"type": "shadow"},
@@ -265,40 +260,40 @@ col3, col4 = st.columns([0.4, 0.35])
 
 with col3:
 
-    tab1, tab2, tab3 = st.tabs(['Profit', 'Sales', 'Quantity'])
+    tab1, tab2, tab3 = st.tabs(['Utilidad', 'Ventas', 'Cantidad'])
 
     with tab1:
-        st.header("Profit")
+        st.header("utilidad")
         st.plotly_chart(fig)
 
     with tab2:
-        st.header("Sales")
+        st.header("Ventas")
         st.plotly_chart(fig2)
 
     with tab3:
-        st.header("Quantity")
+        st.header("Cantidad")
         st.plotly_chart(fig3)
 
 with col4:
 
-    tab4, tab5 = st.tabs(['regions', 'purchases'])
+    tab4, tab5 = st.tabs(['frecuencia', 'Estados'])
 
     with tab4: 
-        st.header("products by purchase") 
+        st.header("productos por compra") 
         st_echarts(option, width=500, height=500)   
         
     with tab5: 
-        st.header("sales by state")
+        st.header("ventas por estado")
         st.plotly_chart(fig4)
         
 ############################        heatmap        #############################################################################
 
-st.header('income by product and category')
+st.header('ingesos por producto y categoria')
 st.plotly_chart(fig5)
 
 ############################        Time series chart                ###########################################################
 
-st.header('time series')
+st.header('Series de tiempo')
 
 col5, col6 = st.columns([0.1, 0.8])
 
@@ -314,9 +309,9 @@ with col6:
 
 ############################################## waterfall charts #######################################################
 
-st.header("Profit Over Time: Variance Analysis")
+st.header("Utilidad a travez del tiempo analisis de varianza")
 
-tab6, tab7 = st.tabs(['js chart', 'plotly chart'])
+tab6, tab7 = st.tabs(['js grafica', 'plotly grafica'])
 
 with tab6:
     st_echarts(options=option2,width=1350, height=500)
