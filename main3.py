@@ -1,5 +1,9 @@
+pip install plotly==5.21.0
+pip pip install streamlit-echarts
 
-import streamlit as st 
+fig = pio.read_json(file='file.json')
+fig.show()
+
 import numpy as np 
 import pandas as pd 
 import os 
@@ -7,6 +11,7 @@ import plotly.express as px
 from PIL import Image
 from streamlit_echarts import st_echarts
 import json 
+import streamlit as st 
 
 
 
