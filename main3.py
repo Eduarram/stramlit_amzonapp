@@ -198,7 +198,7 @@ fig6.update_layout(title="varianza de la utilidad", waterfallgap=0.3, width=1350
 ###################################### waterfall javascript chart ########################################################
 
 option2 = {
-    "title": {"text": "benefio acumulado grafica de cascada"},
+    "title": {"text": "beneficio acumulado grafica de cascada"},
     "tooltip": {
         "trigger": "axis",
         "axisPointer": {"type": "shadow"},
