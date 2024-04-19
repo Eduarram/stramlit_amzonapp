@@ -1,8 +1,3 @@
-pip install plotly==5.21.0
-pip pip install streamlit-echarts
-
-fig = pio.read_json(file='file.json')
-fig.show()
 
 import numpy as np 
 import pandas as pd 
